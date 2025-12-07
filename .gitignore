@@ -9,3 +9,4 @@ PCD/*.pcd
 target/
 CMakeFiles/
 CMakeCache.txt
+libfastlio_mapping.a

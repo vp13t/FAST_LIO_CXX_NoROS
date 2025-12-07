@@ -20,18 +20,11 @@ set(FASTLIO_MAPPING_SOURCES
   src/conversions.cpp
 )
 
-add_library(fastlio_mapping STATIC ${FASTLIO_MAPPING_SOURCES})
-add_library(fastlio_mapping_shared SHARED ${FASTLIO_MAPPING_SOURCES})
+add_library(fastlio_mapping SHARED ${FASTLIO_MAPPING_SOURCES})
 
 set_target_properties(fastlio_mapping PROPERTIES POSITION_INDEPENDENT_CODE ON)
-set_target_properties(fastlio_mapping_shared PROPERTIES POSITION_INDEPENDENT_CODE ON OUTPUT_NAME fastlio_mapping)
 
 target_include_directories(fastlio_mapping PUBLIC
-  ${EIGEN3_INCLUDE_DIR}
-  ${PCL_INCLUDE_DIRS}
-  include
-)
-target_include_directories(fastlio_mapping_shared PUBLIC
   ${EIGEN3_INCLUDE_DIR}
   ${PCL_INCLUDE_DIRS}
   include
@@ -45,21 +38,8 @@ if(OpenMP_CXX_FOUND)
     ${PCL_FILTERS_LIBRARIES}
     ${PCL_KDTREE_LIBRARIES}
   )
-  target_link_libraries(fastlio_mapping_shared
-    PUBLIC OpenMP::OpenMP_CXX
-    ${PCL_COMMON_LIBRARIES}
-    ${PCL_IO_LIBRARIES}
-    ${PCL_FILTERS_LIBRARIES}
-    ${PCL_KDTREE_LIBRARIES}
-  )
 else()
   target_link_libraries(fastlio_mapping
-    ${PCL_COMMON_LIBRARIES}
-    ${PCL_IO_LIBRARIES}
-    ${PCL_FILTERS_LIBRARIES}
-    ${PCL_KDTREE_LIBRARIES}
-  )
-  target_link_libraries(fastlio_mapping_shared
     ${PCL_COMMON_LIBRARIES}
     ${PCL_IO_LIBRARIES}
     ${PCL_FILTERS_LIBRARIES}
