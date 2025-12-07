@@ -1,14 +1,19 @@
 [package]
-name = "fastlio"
+name = "fastlio_cxx_noros"
 version = "0.1.0"
 edition = "2021"
 build = "build.rs"
+license-file="LICENSE"
+description="Rust bindings for FAST_LIO LiDAR Inertial Odometry without the ROS dependency."
+homepage="https://github.com/vp13t/FAST_LIO_CXX_NoROS#"
+repository="https://github.com/vp13t/FAST_LIO_CXX_NoROS#"
+readme="README.md"
 
 [lib]
 path = "src/laserMapping.rs"
 
 [[bin]]
-name = "fastlio"
+name = "fastlio_cxx_noros"
 path = "src/laserMapping.rs"
 
 [dependencies]
